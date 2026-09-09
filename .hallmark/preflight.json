@@ -1,0 +1,22 @@
+{
+  "date": "2026-08-27",
+  "designSystem": "DESIGN.md",
+  "fontStack": "NotionInter substitute: Inter, with JetBrains Mono reserved for backend flow labels",
+  "palette": "Warm paper canvas, near-black ink, Notion blue action, deep indigo hero, decorative sticker accents",
+  "motion": "Motion-cut stance with restrained CTA/card hover and filter fade",
+  "spacing": "8px base with explicit 4pt-compatible semantic tokens",
+  "framework": "Vanilla HTML, CSS, and JavaScript",
+  "preserve": [
+    "DESIGN.md color roles",
+    "DESIGN.md Inter typography direction",
+    "pill CTAs and quiet hairline surfaces",
+    "single indigo hero band"
+  ],
+  "introduce": [
+    "Workbench macrostructure",
+    "CSS system map connecting real projects",
+    "N5 floating pill navigation",
+    "Ft5 statement footer",
+    "mobile-first responsive behavior"
+  ]
+}

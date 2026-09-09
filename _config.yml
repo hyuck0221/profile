@@ -1,0 +1,9 @@
+exclude:
+  - editor.html
+  - editor.css
+  - editor.js
+  - blog.py
+  - BLOG.md
+  - .hallmark
+  - .idea
+  - profile.iml

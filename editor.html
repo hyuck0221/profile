@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="hshim studio 블로그 에디터" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>hshim - 글쓰기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260831-editor-delete" />
+    <link rel="stylesheet" href="./editor.css?v=20260831-drag-only" />
+  </head>
+  <body class="editor-page">
+    <div class="editor-private-shell" id="editor-private-shell" hidden>
+      <a class="skip-link" href="#editor-main">본문으로 건너뛰기</a>
+
+    <header class="editor-header">
+      <div class="editor-header__inner page-shell">
+        <a class="wordmark" href="./index.html" aria-label="hshim studio 홈으로 이동">
+          <span class="wordmark__mark" aria-hidden="true">↗</span>
+          <span>hshim studio</span>
+        </a>
+        <div class="editor-header__actions">
+          <span class="save-state" id="save-state" role="status">저장 대기</span>
+          <a class="button button--secondary editor-header__exit" href="./index.html">나가기</a>
+          <button class="button button--danger editor-delete" id="delete-post" type="button" hidden>삭제</button>
+          <button class="button button--secondary" id="preview-post" type="button" disabled>미리보기</button>
+          <button class="button button--primary" id="publish-post" type="button">저장하기 <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="editor-main" id="editor-main">
+      <div class="editor-layout page-shell">
+        <aside class="editor-sidebar" aria-label="에디터 도움말">
+          <div class="editor-sidebar__intro">
+            <p class="section-eyebrow">EDITOR / NOTEBOOK</p>
+            <h1>새 기록</h1>
+            <p>생각을 블록으로 쪼개고, 필요한 파일을 곁에 남깁니다.</p>
+          </div>
+
+          <section class="editor-history" aria-labelledby="history-title">
+            <div class="editor-history__heading">
+              <div>
+                <p class="section-eyebrow">YOUR NOTES</p>
+                <h2 id="history-title">작성한 글</h2>
+              </div>
+              <span class="editor-history__count" id="history-count">0개</span>
+            </div>
+            <button class="editor-new-post" id="new-post" type="button">+ 새 글 작성</button>
+            <div class="post-history" id="post-history" aria-live="polite">
+              <p class="post-history__empty">작성한 글을 불러오는 중입니다.</p>
+            </div>
+          </section>
+
+          <div class="editor-guide">
+            <p class="section-eyebrow">QUICK GUIDE</p>
+            <p><kbd>Enter</kbd> 새 블록</p>
+            <p><kbd>/</kbd> 블록 종류 선택</p>
+            <p>파일을 이곳에 끌어놓아도 됩니다.</p>
+            <p>이미지 블록은 드래그해서 본문 사이로 옮길 수 있습니다.</p>
+          </div>
+        </aside>
+
+        <section class="editor-workspace" aria-labelledby="post-title">
+          <form id="post-form">
+            <div class="editor-paper">
+              <div class="editor-paper__meta">
+                <span>HSHIM STUDIO / NOTEBOOK</span>
+                <span id="editor-mode">NEW ENTRY</span>
+              </div>
+
+              <input
+                class="editor-title-input"
+                id="post-title"
+                name="title"
+                type="text"
+                placeholder="제목을 입력하세요"
+                autocomplete="off"
+                required
+              />
+              <textarea
+                class="editor-excerpt-input"
+                id="post-excerpt"
+                name="excerpt"
+                rows="2"
+                placeholder="짧은 소개를 적어두면 목록에서 먼저 보여요."
+              ></textarea>
+
+              <div class="editor-rule" aria-hidden="true"></div>
+
+              <div class="editor-toolbar" role="toolbar" aria-label="글 서식">
+                <span class="editor-toolbar__label">BLOCK</span>
+                <button class="editor-tool is-active" type="button" data-insert-type="paragraph">문단</button>
+                <button class="editor-tool" type="button" data-insert-type="heading2">제목</button>
+                <button class="editor-tool" type="button" data-insert-type="quote">인용</button>
+                <button class="editor-tool" type="button" data-insert-type="bullet">목록</button>
+                <button class="editor-tool" type="button" data-insert-type="code">코드</button>
+                <button class="editor-tool" type="button" data-insert-type="divider">선</button>
+                <button class="editor-tool editor-tool--asset" id="asset-trigger" type="button">파일</button>
+                <span class="editor-toolbar__divider" aria-hidden="true"></span>
+                <span class="editor-toolbar__label">TEXT</span>
+                <button class="editor-tool editor-tool--inline" type="button" data-inline-command="bold" aria-label="굵게" aria-pressed="false"><strong>B</strong></button>
+                <button class="editor-tool editor-tool--inline" type="button" data-inline-command="italic" aria-label="기울임" aria-pressed="false"><em>I</em></button>
+                <button class="editor-tool editor-tool--inline" type="button" data-inline-command="underline" aria-label="밑줄" aria-pressed="false"><u>U</u></button>
+                <button class="editor-tool editor-tool--inline" type="button" data-inline-command="strikeThrough" aria-label="취소선" aria-pressed="false"><s>S</s></button>
+                <button class="editor-tool editor-tool--inline" id="inline-link" type="button" aria-label="링크">링크</button>
+              </div>
+
+              <div class="editor-canvas">
+                <div id="editor-blocks" class="block-editor" aria-label="본문 편집 영역"></div>
+                <div class="slash-menu" id="slash-menu" hidden>
+                  <p class="slash-menu__label">블록으로 바꾸기</p>
+                  <button type="button" data-slash-type="heading2"><strong>H</strong><span>제목</span></button>
+                  <button type="button" data-slash-type="quote"><strong>“</strong><span>인용</span></button>
+                  <button type="button" data-slash-type="bullet"><strong>•</strong><span>목록</span></button>
+                  <button type="button" data-slash-type="code"><strong>&lt;/&gt;</strong><span>코드</span></button>
+                  <button type="button" data-slash-type="divider"><strong>—</strong><span>구분선</span></button>
+                </div>
+              </div>
+
+              <div class="editor-paper__footer">
+                <span>변경 사항은 Python 서버를 통해 프로젝트 폴더에 저장됩니다.</span>
+                <span id="block-count">블록 0개</span>
+              </div>
+            </div>
+
+            <div class="editor-settings">
+              <section class="editor-thumbnail" aria-labelledby="thumbnail-title">
+                <div class="editor-thumbnail__heading">
+                  <div>
+                    <p class="section-eyebrow">COVER IMAGE</p>
+                    <h2 id="thumbnail-title">썸네일 사진</h2>
+                  </div>
+                  <span id="thumbnail-state">본문 첫 사진 사용</span>
+                </div>
+                <div class="thumbnail-preview" id="thumbnail-preview" aria-live="polite">
+                  <p class="thumbnail-preview__empty">본문에 사진을 추가하면 첫 사진이 자동으로 표시됩니다.</p>
+                </div>
+                <div class="editor-thumbnail__actions">
+                  <button class="button button--secondary" id="thumbnail-trigger" type="button">썸네일 사진 선택</button>
+                  <button class="button button--secondary" id="thumbnail-reset" type="button" hidden>본문 첫 사진 사용</button>
+                </div>
+                <p class="editor-thumbnail__hint">따로 고르지 않으면 본문에 올린 첫 번째 사진을 썸네일로 사용합니다.</p>
+              </section>
+
+              <label class="editor-field">
+                <span>태그</span>
+                <input id="post-tags" name="tags" type="text" placeholder="예: kotlin, api, 기록" autocomplete="off" />
+                <small>쉼표로 구분하면 홈에서 필터로 사용할 수 있어요.</small>
+              </label>
+              <label class="editor-field">
+                <span>주소 슬러그</span>
+                <input id="post-slug" name="slug" type="text" placeholder="자동으로 만들어집니다" autocomplete="off" />
+                <small>영문·한글·숫자와 하이픈을 사용합니다.</small>
+              </label>
+            </div>
+          </form>
+
+          <p class="editor-status" id="editor-status" role="status"></p>
+        </section>
+      </div>
+    </main>
+
+      <input id="asset-input" type="file" multiple hidden />
+      <input id="thumbnail-input" type="file" accept="image/*" hidden />
+
+      <dialog class="asset-name-dialog" id="asset-name-dialog" aria-labelledby="asset-name-title">
+        <form class="asset-name-dialog__form" id="asset-name-form" method="dialog">
+          <p class="section-eyebrow">FILE NAME</p>
+          <h2 id="asset-name-title">업로드할 파일 이름</h2>
+          <p class="asset-name-dialog__hint" id="asset-name-hint">본문에 표시될 파일 이름을 정해주세요.</p>
+          <label class="editor-field">
+            <span>파일 이름</span>
+            <input id="asset-name-input" type="text" autocomplete="off" spellcheck="false" required />
+          </label>
+          <div class="asset-name-dialog__actions">
+            <button class="button button--secondary" id="asset-name-cancel" value="cancel" type="button">취소</button>
+            <button class="button button--primary" id="asset-name-confirm" value="confirm" type="submit">이 이름으로 업로드</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+
+    <main class="editor-blocked" id="editor-blocked" hidden>
+      <div class="editor-blocked__card">
+        <p class="section-eyebrow">LOCAL EDITOR ONLY</p>
+        <h1>이 페이지는 로컬에서만 사용할 수 있습니다.</h1>
+        <p>글 작성과 파일 저장은 프로젝트 폴더의 Python 서버에서만 허용됩니다.</p>
+        <a class="button button--secondary" href="./index.html">메인으로 돌아가기</a>
+      </div>
+    </main>
+
+    <script src="./rich-text.js?v=20260831-rich-text" defer></script>
+    <script src="./editor.js?v=20260831-drag-only" defer></script>
+  </body>
+</html>

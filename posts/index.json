@@ -1,0 +1,28 @@
+[
+  {
+    "id": "타피스-운영-인프라-이관-프로세스",
+    "slug": "타피스-운영-인프라-이관-프로세스",
+    "title": "타피스 운영 인프라 이관 프로세스",
+    "excerpt": "실 운영중인 전체 시스템 인프라를 다운타임 없이 이관한 과정을 정리합니다",
+    "tags": [],
+    "status": "published",
+    "publishedAt": "2026-09-08T06:05:51+00:00",
+    "updatedAt": "2026-09-08T07:32:31+00:00",
+    "readingTime": 2,
+    "cover": "assets/uploads/타피스-운영-인프라-이관-프로세스/ChatGPT-Image-2026년-9월-8일-오후-04_31_51.png",
+    "file": "./posts/타피스-운영-인프라-이관-프로세스.json"
+  },
+  {
+    "id": "타피스-택시회사-erp",
+    "slug": "타피스-택시회사-erp",
+    "title": "타피스 - 택시회사 ERP",
+    "excerpt": "아우토크립트 / 택시회사 맞춤 자원 통합관리 시스템\n2022.11 ~ 2026.08",
+    "tags": [],
+    "status": "published",
+    "publishedAt": "2026-08-31T06:17:48+00:00",
+    "updatedAt": "2026-09-08T06:04:59+00:00",
+    "readingTime": 4,
+    "cover": "assets/uploads/타피스-택시회사-erp/ChatGPT-Image-2026년-8월-31일-오후-03_22_39.png",
+    "file": "./posts/타피스-택시회사-erp.json"
+  }
+]

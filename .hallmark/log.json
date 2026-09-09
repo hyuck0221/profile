@@ -1,0 +1,79 @@
+[
+  {
+    "date": "2026-08-28",
+    "macrostructure": "Catalogue",
+    "theme": "Notion Analysis",
+    "enrichment": "none — text-only right profile rail",
+    "brief": "Reduced every profile detail to small plain text rows below a full-width PROFILE / 01 marker",
+    "contrast": "pass",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "none",
+    "slopTest": "pass — browser checked at 320, 375, 414, 768, and 1280px"
+  },
+  {
+    "date": "2026-08-28",
+    "macrostructure": "Catalogue",
+    "theme": "Notion Analysis",
+    "enrichment": "none — full-width profile marker with right rail",
+    "brief": "Moved PROFILE / 01 to a full-width top line and kept profile data small on the right",
+    "contrast": "pass",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "none",
+    "slopTest": "pass — browser checked at 320, 375, 414, 768, and 1280px"
+  },
+  {
+    "date": "2026-08-28",
+    "macrostructure": "Catalogue",
+    "theme": "Notion Analysis",
+    "enrichment": "none — right-aligned profile rail",
+    "brief": "Simplified profile into small, one-by-one rows aligned to the right side",
+    "contrast": "pass",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "none",
+    "slopTest": "pass — browser checked at 320, 375, 414, 768, and 1280px"
+  },
+  {
+    "date": "2026-08-28",
+    "macrostructure": "Index-First",
+    "theme": "Notion Analysis",
+    "enrichment": "none — factual profile index",
+    "brief": "Redesigned profile screen for 심혁 with birth year, GitHub, and grouped backend stack",
+    "contrast": "pass",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "none",
+    "slopTest": "pass — browser checked at 320, 375, 414, 768, and 1280px"
+  },
+  {
+    "date": "2026-08-28",
+    "macrostructure": "Split Studio",
+    "theme": "Notion Analysis",
+    "enrichment": "none — restrained backend summary panel",
+    "brief": "First-stage hero only: removed all sections below the hero and reduced AI-style decoration",
+    "contrast": "pass",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "removed for staged build",
+    "slopTest": "pass — browser checked at 320, 375, 414, 768, 1280, and 1920px"
+  },
+  {
+    "date": "2026-08-27",
+    "macrostructure": "Workbench",
+    "theme": "Notion Analysis",
+    "enrichment": "Tier A CSS system map",
+    "brief": "Backend portfolio shaped by APIsis, spring-api-assist, Kemi, Commentube, Nucleus, and CallIt",
+    "contrast": "pass",
+    "nav": "N5 floating pill",
+    "footer": "Ft5 statement footer",
+    "slopTest": "pass with locked DESIGN.md Inter exception"
+  },
+  {
+    "date": "2026-08-27",
+    "macrostructure": "Portfolio Grid",
+    "theme": "Notion Analysis",
+    "enrichment": "Tier A CSS accent field",
+    "brief": "Editable Korean developer portfolio template for projects, stack, milestones, and contact",
+    "contrast": "pass",
+    "nav": "compact inline navigation pill",
+    "footer": "Ft5 statement footer",
+    "slopTest": "pass with locked DESIGN.md Inter exception"
+  }
+]

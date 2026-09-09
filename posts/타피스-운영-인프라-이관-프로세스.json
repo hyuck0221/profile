@@ -1,0 +1,207 @@
+{
+  "id": "타피스-운영-인프라-이관-프로세스",
+  "slug": "타피스-운영-인프라-이관-프로세스",
+  "title": "타피스 운영 인프라 이관 프로세스",
+  "excerpt": "실 운영중인 전체 시스템 인프라를 다운타임 없이 이관한 과정을 정리합니다",
+  "tags": [],
+  "status": "published",
+  "createdAt": "2026-09-08T06:05:51+00:00",
+  "updatedAt": "2026-09-08T07:32:31+00:00",
+  "publishedAt": "2026-09-08T06:05:51+00:00",
+  "readingTime": 2,
+  "cover": "assets/uploads/타피스-운영-인프라-이관-프로세스/ChatGPT-Image-2026년-9월-8일-오후-04_31_51.png",
+  "blocks": [
+    {
+      "type": "heading2",
+      "text": "사전 배경"
+    },
+    {
+      "type": "paragraph",
+      "text": "당시 조직 내 devops 시스템에 맞춰져 EKS로 관리되고 있었습니다\ndevops 전체 퇴사로 인프라 관리 인력이 없어진 상황에서 인사이동이 발생하였습니다\n타피스는 CEO 직속 TF팀이 꾸려져 AWS 계정 분리가 필요했습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "관리자페이지는 9~18시 사이 트래픽이 쌓이고\n기사앱은 1~2시, 15~17시 경 트래픽이 쌓입니다\n트래픽이 많진 않지만 문제가 생길 경우 기사님들 영업에 지장이 생길 수 있습니다"
+    },
+    {
+      "type": "heading2",
+      "text": "목표"
+    },
+    {
+      "type": "bullet",
+      "text": "다운타임은 최소화"
+    },
+    {
+      "type": "bullet",
+      "text": "모든 인프라 이관 필요"
+    },
+    {
+      "type": "bullet",
+      "text": "데이터 손실 없이"
+    },
+    {
+      "type": "bullet",
+      "text": "인프라 관리 인력이 없으므로 빠르고 쉬운 인프라 구축이 필요"
+    },
+    {
+      "type": "heading2",
+      "text": "진행"
+    },
+    {
+      "type": "paragraph",
+      "text": "이관 전 AWS 계정은 '구계정', 이관 후 AWS 계정은 '신계정' 으로 명칭합니다",
+      "html": "<i>이관 전 AWS 계정은 '구계정', 이관 후 AWS 계정은 '신계정' 으로 명칭합니다</i>"
+    },
+    {
+      "type": "quote",
+      "text": "1. IAM, Role",
+      "html": "<b>1. IAM, Role</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "서버에서 S3 등 AWS 접근을 위한 access key 발급이 필요합니다\n이는 구계정에서도 동일한 방식으로 설계되어 같은 방식으로 처리하였습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "신계정에서 service 접근용 계정을 추가하여 키를 발급합니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/타피스-운영-인프라-이관-프로세스/AWS_IAM_계정생성.png",
+      "name": "AWS_IAM_계정생성.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    },
+    {
+      "type": "quote",
+      "text": "2. 코드 수정",
+      "html": "<b>2. 코드 수정</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "기존 서버에 선행되야 할 코드 수정 작업입니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "AWS access key 중복 설정",
+      "html": "<b>AWS access key 중복 설정</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "두 계정에 동시 접근되야 하므로 access key 복수 저장을 지원해야 합니다\naccess key 별 S3 base-url도 매핑 설정합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "구/신 계정 S3 중복 저장,삭제",
+      "html": "<b>구/신 계정 S3 중복 저장,삭제</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "데이터 이관 중, 후 트래픽에 대한 파일 손실을 방지하기 위해 구/신 계정 모두에 저장, 삭제 처리가 되도록 선행작업을 진행합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "서버에서 컴포넌트로 관리하던 S3 저장/삭제 규칙을 임시로 구계정, 신계정 각각 트래픽을 쏘도록 코드를 추가합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "조회 규칙은 구계정만 보도록 하여 데이터 이관 전 상태에서 404를 방지합니다"
+    },
+    {
+      "type": "quote",
+      "text": "3. 신계정 인프라 구축",
+      "html": "<b>3. 신계정 인프라 구축</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "전문 인프라 관리 인력이 없으므로 최대한 쉽고 가볍게 설계해야 합니다\n이를 위해 ECS를 활용하였습니다",
+      "html": "전문 인프라 관리 인력이 없으므로 최대한 쉽고 가볍게 설계해야 합니다\n이를 위해 <b>ECS</b>를 활용하였습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "DB도 RDS를 통해 새로 띄웁니다\n기존엔 Mysql AuroraDB를 사용했습니다만 오버스펙으로 판단되어 전체적으로 mariaDB로 통일합니다",
+      "html": "DB도 <b>RDS</b>를 통해 새로 띄웁니다\n기존엔 Mysql AuroraDB를 사용했습니다만 오버스펙으로 판단되어 전체적으로 mariaDB로 통일합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "mysql -> mariaDB 로 변경이 걱정될 수 있겠으나\nauroraDB 사용 전엔 mariaDB를 사용했었고 꽤나 오래 사용하면서 이미 코드 상은 mariaDB에 맞춰져 있었습니다\nmysql로 변경 후 추가한 SQL도 전수조사 했을 때 문제없음으로 판단되어 DB 엔진은 롤백하기로 최종 결정되었습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "구계정에선 grafana 연동으로 로그를 관리하였으나 동일한 문제로 로그 관리도 cloudwatch를 연결하여 해결했습니다",
+      "html": "구계정에선 grafana 연동으로 로그를 관리하였으나 동일한 문제로 로그 관리도 <b>cloudwatch</b>를 연결하여 해결했습니다"
+    },
+    {
+      "type": "quote",
+      "text": "4. 데이터 마이그레이션",
+      "html": "<b>4. 데이터 마이그레이션</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "DB",
+      "html": "<b>DB</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "AWS에 DMS 서비스를 활용합니다\n인스턴스를 하나 띄워 구계정 DB와 신계정 DB를 연결하여 이관과 replication을 지속합니다",
+      "html": "AWS에 <b>DMS</b> 서비스를 활용합니다\n인스턴스를 하나 띄워 구계정 DB와 신계정 DB를 연결하여 이관과 replication을 지속합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "DMS를 사용할 예정이였어서 S3처럼 코드 상에서 별도 처리를 하지 않았습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "table 중 API 호출 기록을 저장하는 api_log table은 사용 가치 대비 용량이 과하게 많으므로 이관 대상에서 제외합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "구계정 DB와 신계정 DB는 서로 다른 VPC라 두 곳 동시 접근이 불가합니다\n이를 해결하기 위해 VPC Peering을 사전에 등록합니다",
+      "html": "구계정 DB와 신계정 DB는 서로 다른 VPC라 두 곳 동시 접근이 불가합니다\n이를 해결하기 위해 <b>VPC Peering</b>을 사전에 등록합니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/타피스-운영-인프라-이관-프로세스/AWS_VPC_peering.png",
+      "name": "AWS_VPC_peering.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    },
+    {
+      "type": "paragraph",
+      "text": "서로 통신할 수 있게 라우팅 테이블까지 구성하면 완료입니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "S3",
+      "html": "<b>S3</b>"
+    },
+    {
+      "type": "paragraph",
+      "text": "CLI 명령어 중 sync 기능을 사용하여 이관합니다",
+      "html": "CLI 명령어 중 <b>sync</b> 기능을 사용하여 이관합니다\n"
+    },
+    {
+      "type": "code",
+      "text": "aws s3 sync s3://service-구계정/prod s3://service-신계정/prod"
+    },
+    {
+      "type": "paragraph",
+      "text": "위 명령어는 복사 대상 버킷에 이미 있는 파일은 스킵하고 이관되지 않은 파일만 복사해줍니다",
+      "html": "위 명령어는 복사 대상 버킷에 이미 있는 파일은 스킵하고 이관되지 않은 파일만 복사해줍니다<br>"
+    },
+    {
+      "type": "paragraph",
+      "text": "이미 서버에선 두 S3에 파일을 처리중이므로 한번만 실행하면 모든 이관작업은 끝입니다"
+    },
+    {
+      "type": "quote",
+      "text": "마무리"
+    },
+    {
+      "type": "paragraph",
+      "text": "도메인 접속 경로를 신계정 cloudfront로 연결해준 후 트래픽 유입 정상 확인까지 진행합니다\n이렇게 누락 데이터 0건, 다운타임 0분, 이슈 없음으로 이관이 마무리 되었습니다"
+    }
+  ]
+}

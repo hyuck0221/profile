@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="hshim studio에서 백엔드 시스템을 만드는 심혁의 개발자 포트폴리오입니다."
+    />
+    <title>hshim - 프로필</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260901-career-timeline" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <div id="page-content">
+      <header class="site-header" id="top">
+        <div class="site-header__inner">
+          <a class="wordmark" href="./index.html" aria-label="hshim studio 홈으로 이동">
+            <span class="wordmark__mark" aria-hidden="true">↗</span>
+            <span>hshim studio</span>
+          </a>
+
+          <nav class="site-nav" aria-label="주요 메뉴">
+            <a class="site-nav__link is-active" href="./index.html" aria-current="page">프로필</a>
+            <a class="site-nav__link" href="./journal.html">기록</a>
+            <a class="site-nav__link" href="./contact.html">문의</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="profile-page" aria-labelledby="profile-title">
+          <div class="profile-page__inner page-shell">
+            <section class="profile-career" aria-labelledby="career-title">
+              <div class="profile-career__header">
+                <div class="profile-career__identity">
+                  <p class="section-eyebrow">CAREER</p>
+                  <h2 id="career-title">아우토크립트</h2>
+                </div>
+
+                <div class="profile-career__dates" aria-label="근무 기간">
+                  <div class="profile-career__date">
+                    <span class="profile-career__date-label">입사</span>
+                    <time datetime="2022-09">2022년 9월</time>
+                  </div>
+                  <div class="profile-career__date profile-career__date--current">
+                    <span class="profile-career__date-label">현재</span>
+                    <time datetime="2026-08-31" data-career-current-date>2026년 8월 31일</time>
+                  </div>
+                </div>
+              </div>
+
+              <section class="profile-career__history" aria-labelledby="career-history-title">
+                <div class="profile-career__history-header">
+                  <h3 id="career-history-title">주요 기록</h3>
+                  <span>2022 — 2026</span>
+                </div>
+
+                <ol class="profile-career__events" aria-label="주요 기록 최신순" reversed>
+                  <li class="profile-career__event profile-career__event--current">
+                    <time datetime="2026-08">2026년 8월</time>
+                    <p>'타피스' 인수인계 및 프로젝트 종료</p>
+                  </li>
+                  <li class="profile-career__event">
+                    <time datetime="2026-05">2026년 5월</time>
+                    <p>통합 차량로그 관리 시스템 프로젝트 시작</p>
+                  </li>
+                  <li class="profile-career__event">
+                    <time datetime="2024-10">2024년 10월</time>
+                    <p>'타피스' 운영 인프라 이관</p>
+                  </li>
+                  <li class="profile-career__event">
+                    <time datetime="2023-01">2023년 1월</time>
+                    <p>'타피스' 백엔드 파트장 역할</p>
+                  </li>
+                  <li class="profile-career__event">
+                    <time datetime="2022-11">2022년 11월</time>
+                    <p>'타피스' 프로젝트 시작</p>
+                  </li>
+                  <li class="profile-career__event">
+                    <time datetime="2022-09">2022년 9월</time>
+                    <p>'Greego', '이동의자유' 리팩토링</p>
+                  </li>
+                </ol>
+              </section>
+
+              <div class="profile-career__footer">
+                <a class="profile-career__link" href="./journal.html">
+                  기록 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </section>
+
+            <div class="profile-rail">
+              <p class="profile-rail__eyebrow">PROFILE</p>
+
+              <h1 id="profile-title"><span>이름:</span> 심혁</h1>
+              <dl class="profile-facts" aria-label="프로필 기본 정보">
+                <div class="profile-fact">
+                  <dt>출생년도:</dt>
+                  <dd>2004</dd>
+                </div>
+                <div class="profile-fact">
+                  <dt>GitHub:</dt>
+                  <dd>
+                    <a href="https://github.com/hyuck0221" target="_blank" rel="noreferrer">
+                      <span>github.com/hyuck0221</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+
+              <section class="profile-stack" aria-labelledby="stack-title">
+                <h2 id="stack-title">기술스택:</h2>
+                <div class="profile-stack__groups">
+                  <div class="profile-stack__group">
+                    <h3>언어</h3>
+                    <ul class="profile-stack__list" aria-label="언어">
+                      <li>Kotlin</li>
+                      <li>Java</li>
+                    </ul>
+                  </div>
+                  <div class="profile-stack__group">
+                    <h3>프레임워크</h3>
+                    <ul class="profile-stack__list" aria-label="프레임워크">
+                      <li>Spring Boot</li>
+                    </ul>
+                  </div>
+                  <div class="profile-stack__group">
+                    <h3>데이터베이스</h3>
+                    <ul class="profile-stack__list" aria-label="데이터">
+                      <li>MySQL</li>
+                      <li>PostgreSQL</li>
+                      <li>Redis</li>
+                    </ul>
+                  </div>
+                  <div class="profile-stack__group">
+                    <h3>인프라</h3>
+                    <ul class="profile-stack__list" aria-label="인프라">
+                      <li>AWS</li>
+                      <li>GCP</li>
+                      <li>Docker</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <details class="profile-stack__details">
+                  <summary>세부스택</summary>
+                  <div class="profile-stack__details-groups">
+                    <div class="profile-stack__details-group">
+                      <h3>AWS</h3>
+                      <ul class="profile-stack__list" aria-label="AWS 세부 스택">
+                        <li>ECS</li>
+                        <li>EKS</li>
+                        <li>EC2</li>
+                        <li>VPC</li>
+                        <li>ECR</li>
+                        <li>SQS</li>
+                        <li>SNS</li>
+                        <li>S3</li>
+                        <li>RDS</li>
+                        <li>CloudWatch</li>
+                        <li>Lambda</li>
+                        <li>DMS</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>협업</h3>
+                      <ul class="profile-stack__list" aria-label="협업 세부 스택">
+                        <li>Git</li>
+                        <li>Jira</li>
+                        <li>confluence</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>데이터베이스</h3>
+                      <ul class="profile-stack__list" aria-label="데이터베이스 세부 스택">
+                        <li>Aurora MySQL</li>
+                        <li>OpenSearch</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>IaC</h3>
+                      <ul class="profile-stack__list" aria-label="IaC 세부 스택">
+                        <li>argoCD</li>
+                        <li>github actions</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>에이전트</h3>
+                      <ul class="profile-stack__list" aria-label="에이전트 세부 스택">
+                        <li>fluentBit</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>스트리밍</h3>
+                      <ul class="profile-stack__list" aria-label="스트리밍 세부 스택">
+                        <li>kafka</li>
+                      </ul>
+                    </div>
+                    <div class="profile-stack__details-group">
+                      <h3>기타 언어</h3>
+                      <ul class="profile-stack__list" aria-label="기타 언어 세부 스택">
+                        <li>python</li>
+                      </ul>
+                    </div>
+                  </div>
+                </details>
+              </section>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <script src="./profile.js?v=20260831-timeline" defer></script>
+
+  </body>
+</html>

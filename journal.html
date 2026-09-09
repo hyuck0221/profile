@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="심혁이 만든 API와 라이브러리, 개발 도구에 관한 기록을 모아둔 블로그입니다."
+    />
+    <title>hshim - 기록</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260831-journal-excerpt" />
+  </head>
+  <body class="journal-page">
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="site-header" id="top">
+      <div class="site-header__inner">
+        <a class="wordmark" href="./index.html" aria-label="hshim studio 홈으로 이동">
+          <span class="wordmark__mark" aria-hidden="true">↗</span>
+          <span>hshim studio</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a class="site-nav__link" href="./index.html">프로필</a>
+          <a class="site-nav__link is-active" href="./journal.html" aria-current="page">기록</a>
+          <a class="site-nav__link" href="./contact.html">문의</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="journal journal--page" id="journal" aria-labelledby="journal-title">
+        <div class="journal__inner page-shell">
+          <h1 id="journal-title" class="sr-only">기록</h1>
+
+          <div class="journal__toolbar">
+            <label class="journal__search">
+              <span class="sr-only">글 검색</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="post-search" type="search" placeholder="글 검색" autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="post-grid" id="post-list" aria-live="polite">
+            <article class="journal-empty" data-empty-state>
+              <p class="section-eyebrow">NO PUBLISHED NOTES</p>
+              <h3>첫 번째 기록을 시작해보세요.</h3>
+              <p>공개된 글이 생기면 이곳에 시간순으로 정리됩니다.</p>
+            </article>
+          </div>
+
+          <p class="journal__status" id="journal-status" role="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js?v=20260831-journal-minimal" defer></script>
+  </body>
+</html>
