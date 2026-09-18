@@ -1,0 +1,10 @@
+{
+  "id": "travelink",
+  "slug": "travelink",
+  "title": "Travelink",
+  "url": "https://travelink.hshim.dev/",
+  "thumbnail": "assets/uploads/project-travelink/thumbnail.png",
+  "description": "하나의 화면에서 여행 일정을 깔끔하게 관리해보세요\n모든 일정 데이터는 링크로 저장되어 쉽게 공유할 수 있어요\nAI 및 MCP 연결로 일정 관리에 도움을 받을 수 있어요",
+  "createdAt": "2026-09-18T04:19:21+00:00",
+  "updatedAt": "2026-09-18T04:21:29+00:00"
+}

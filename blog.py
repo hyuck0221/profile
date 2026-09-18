@@ -31,8 +31,10 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parent
 POSTS_DIR = ROOT / "posts"
+PROJECTS_DIR = ROOT / "projects"
 UPLOADS_DIR = ROOT / "assets" / "uploads"
 INDEX_FILE = POSTS_DIR / "index.json"
+PROJECTS_INDEX_FILE = PROJECTS_DIR / "index.json"
 MAX_JSON_BYTES = 2 * 1024 * 1024
 MAX_UPLOAD_BYTES = 512 * 1024 * 1024
 ALLOWED_BLOCK_TYPES = {
@@ -78,6 +80,11 @@ def clean_text(value: object, limit: int = 20000) -> str:
 def safe_inline_href(value: object) -> str | None:
     href = str(value or "").strip()
     return href if re.match(r"^(?:https?:|mailto:)", href, re.IGNORECASE) else None
+
+
+def safe_project_href(value: object) -> str | None:
+    href = str(value or "").strip()
+    return href if re.match(r"^https?://[^\s]+$", href, re.IGNORECASE) else None
 
 
 class InlineHTMLSanitizer(HTMLParser):
@@ -222,6 +229,13 @@ def post_asset_refs(post: object) -> set[str]:
     return refs
 
 
+def project_asset_refs(project: object) -> set[str]:
+    if not isinstance(project, dict):
+        return set()
+    thumbnail = safe_asset_ref(project.get("thumbnail"))
+    return {thumbnail} if thumbnail else set()
+
+
 def upload_asset_path(ref: object) -> Path | None:
     normalized = safe_asset_ref(ref)
     if not normalized:
@@ -237,12 +251,16 @@ def upload_asset_path(ref: object) -> Path | None:
 
 def referenced_assets(exclude: Path | None = None) -> set[str]:
     refs: set[str] = set()
-    for path in POSTS_DIR.glob("*.json"):
-        if path.name == INDEX_FILE.name or (exclude and path == exclude):
-            continue
-        post = read_json(path)
-        if post:
-            refs.update(post_asset_refs(post))
+    for directory, index_file, asset_reader in (
+        (POSTS_DIR, INDEX_FILE, post_asset_refs),
+        (PROJECTS_DIR, PROJECTS_INDEX_FILE, project_asset_refs),
+    ):
+        for path in directory.glob("*.json"):
+            if path.name == index_file.name or (exclude and path == exclude):
+                continue
+            value = read_json(path)
+            if value:
+                refs.update(asset_reader(value))
     return refs
 
 
@@ -267,9 +285,12 @@ def remove_orphaned_assets(previous_post: object, current_post: object, target: 
 
 def ensure_directories() -> None:
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
+    PROJECTS_DIR.mkdir(parents=True, exist_ok=True)
     UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
     if not INDEX_FILE.exists():
         INDEX_FILE.write_text("[]\n", encoding="utf-8")
+    if not PROJECTS_INDEX_FILE.exists():
+        PROJECTS_INDEX_FILE.write_text("[]\n", encoding="utf-8")
 
 
 def read_json(path: Path) -> dict | None:
@@ -356,6 +377,20 @@ def post_metadata(post: dict, filename: str) -> dict:
     }
 
 
+def project_metadata(project: dict, filename: str) -> dict:
+    return {
+        "id": project.get("id", project.get("slug", "")),
+        "slug": project.get("slug", ""),
+        "title": project.get("title", "제목 없음"),
+        "url": safe_project_href(project.get("url")) or "",
+        "thumbnail": safe_asset_ref(project.get("thumbnail")),
+        "description": project.get("description", ""),
+        "createdAt": project.get("createdAt"),
+        "updatedAt": project.get("updatedAt"),
+        "file": f"./projects/{filename}",
+    }
+
+
 def rebuild_index() -> list[dict]:
     ensure_directories()
     items: list[dict] = []
@@ -372,6 +407,27 @@ def rebuild_index() -> list[dict]:
         reverse=True,
     )
     INDEX_FILE.write_text(
+        json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return items
+
+
+def rebuild_projects_index() -> list[dict]:
+    ensure_directories()
+    items: list[dict] = []
+    for path in PROJECTS_DIR.glob("*.json"):
+        if path.name == PROJECTS_INDEX_FILE.name:
+            continue
+        project = read_json(path)
+        if not project:
+            continue
+        items.append(project_metadata(project, path.name))
+
+    items.sort(
+        key=lambda item: item.get("updatedAt") or item.get("createdAt") or "",
+        reverse=True,
+    )
+    PROJECTS_INDEX_FILE.write_text(
         json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     return items
@@ -413,6 +469,61 @@ def save_post(payload: dict) -> dict:
     remove_orphaned_assets(previous, post, target)
     index = rebuild_index()
     return {"post": post, "index": index}
+
+
+def save_project(payload: dict) -> dict:
+    ensure_directories()
+    title = clean_text(payload.get("title"), 160)
+    if not title:
+        raise ValueError("프로젝트 제목을 입력해주세요.")
+
+    url = safe_project_href(payload.get("url") or payload.get("link"))
+    if not url:
+        raise ValueError("프로젝트 링크는 http:// 또는 https://로 시작해야 합니다.")
+
+    description = clean_text(payload.get("description"), 500)
+    submitted_slug = clean_text(payload.get("slug"), 100)
+    requested_slug = slugify(submitted_slug or title)
+    target = PROJECTS_DIR / f"{requested_slug}.json"
+    previous = read_json(target) if target.exists() else None
+    if target.exists() and not submitted_slug:
+        base_slug = requested_slug
+        counter = 2
+        while target.exists():
+            requested_slug = slugify(f"{base_slug}-{counter}")
+            target = PROJECTS_DIR / f"{requested_slug}.json"
+            counter += 1
+        previous = None
+
+    thumbnail = safe_asset_ref(payload.get("thumbnail"))
+    if not thumbnail:
+        raise ValueError("프로젝트 썸네일을 선택해주세요.")
+
+    created_at = (previous or {}).get("createdAt") or now_iso()
+    project = {
+        "id": (previous or {}).get("id") or requested_slug,
+        "slug": requested_slug,
+        "title": title,
+        "url": url,
+        "thumbnail": thumbnail,
+        "description": description,
+        "createdAt": created_at,
+        "updatedAt": now_iso(),
+    }
+    target.write_text(json.dumps(project, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    removed = project_asset_refs(previous) - project_asset_refs(project)
+    in_use = referenced_assets(exclude=target)
+    for ref in removed - in_use:
+        path = upload_asset_path(ref)
+        if not path or not (path.is_file() or path.is_symlink()):
+            continue
+        try:
+            path.unlink()
+            path.parent.rmdir()
+        except OSError:
+            pass
+    index = rebuild_projects_index()
+    return {"project": project, "index": index}
 
 
 def remove_post_assets(post: object, target: Path, slug: str) -> list[str]:
@@ -459,6 +570,36 @@ def delete_post(slug: str) -> dict:
     deleted_assets = remove_post_assets(post, target, normalized_slug)
     target.unlink()
     index = rebuild_index()
+    return {"slug": normalized_slug, "deletedAssets": deleted_assets, "index": index}
+
+
+def delete_project(slug: str) -> dict:
+    ensure_directories()
+    raw_slug = str(slug or "").strip()
+    if not raw_slug or "/" in raw_slug or "\\" in raw_slug:
+        raise ValueError("삭제할 프로젝트 주소가 올바르지 않습니다.")
+
+    normalized_slug = slugify(raw_slug)
+    target = PROJECTS_DIR / f"{normalized_slug}.json"
+    project = read_json(target)
+    if not project:
+        raise FileNotFoundError("프로젝트를 찾을 수 없습니다.")
+
+    in_use = referenced_assets(exclude=target)
+    deleted_assets: list[str] = []
+    for ref in sorted(project_asset_refs(project) - in_use):
+        path = upload_asset_path(ref)
+        if not path or not (path.is_file() or path.is_symlink()):
+            continue
+        path.unlink()
+        deleted_assets.append(ref)
+        try:
+            path.parent.rmdir()
+        except OSError:
+            pass
+
+    target.unlink()
+    index = rebuild_projects_index()
     return {"slug": normalized_slug, "deletedAssets": deleted_assets, "index": index}
 
 
@@ -583,6 +724,9 @@ class BlogRequestHandler(SimpleHTTPRequestHandler):
                 posts = rebuild_index()
             self.send_json(posts)
             return
+        if parsed.path == "/api/projects":
+            self.send_json(rebuild_projects_index())
+            return
         if parsed.path == "/api/post":
             slug = slugify(parse_qs(parsed.query).get("slug", [""])[0])
             post = read_json(POSTS_DIR / f"{slug}.json")
@@ -590,6 +734,14 @@ class BlogRequestHandler(SimpleHTTPRequestHandler):
                 self.send_json({"error": "글을 찾을 수 없습니다."}, 404)
                 return
             self.send_json(post)
+            return
+        if parsed.path == "/api/project":
+            slug = slugify(parse_qs(parsed.query).get("slug", [""])[0])
+            project = read_json(PROJECTS_DIR / f"{slug}.json")
+            if not project:
+                self.send_json({"error": "프로젝트를 찾을 수 없습니다."}, 404)
+                return
+            self.send_json(project)
             return
         super().do_GET()
 
@@ -601,6 +753,13 @@ class BlogRequestHandler(SimpleHTTPRequestHandler):
                 if not isinstance(payload, dict):
                     raise ValueError("글 데이터 형식이 올바르지 않습니다.")
                 self.send_json({"ok": True, **save_post(payload)})
+                return
+
+            if parsed.path == "/api/save-project":
+                payload = json.loads(self.read_body(MAX_JSON_BYTES).decode("utf-8"))
+                if not isinstance(payload, dict):
+                    raise ValueError("프로젝트 데이터 형식이 올바르지 않습니다.")
+                self.send_json({"ok": True, **save_project(payload)})
                 return
 
             if parsed.path == "/api/upload":
@@ -645,6 +804,11 @@ class BlogRequestHandler(SimpleHTTPRequestHandler):
             if parsed.path == "/api/post":
                 slug = parse_qs(parsed.query).get("slug", [""])[0]
                 self.send_json({"ok": True, **delete_post(slug)})
+                return
+
+            if parsed.path == "/api/project":
+                slug = parse_qs(parsed.query).get("slug", [""])[0]
+                self.send_json({"ok": True, **delete_project(slug)})
                 return
 
             raise ValueError("지원하지 않는 API입니다.")
@@ -718,7 +882,7 @@ def main() -> int:
     new_parser = subparsers.add_parser("new", help="새 초안 JSON 파일을 만듭니다.")
     new_parser.add_argument("title", nargs="?", default="새 글")
 
-    subparsers.add_parser("render", help="posts 폴더를 읽어 공개 글 인덱스를 다시 만듭니다.")
+    subparsers.add_parser("render", help="posts와 projects 폴더의 공개 인덱스를 다시 만듭니다.")
 
     args = parser.parse_args()
     if args.command is None or args.command == "serve":
@@ -731,7 +895,9 @@ def main() -> int:
         print(path.relative_to(ROOT).as_posix())
     elif args.command == "render":
         items = rebuild_index()
+        projects = rebuild_projects_index()
         print(f"공개 글 {len(items)}개를 posts/index.json에 반영했습니다.")
+        print(f"프로젝트 {len(projects)}개를 projects/index.json에 반영했습니다.")
     return 0
 
 

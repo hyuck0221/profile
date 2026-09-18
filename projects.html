@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="심혁이 만든 프로젝트 링크를 모아둔 포트폴리오입니다."
+    />
+    <title>hshim - 프로젝트</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260918-projects" />
+    <link rel="stylesheet" href="./projects.css?v=20260918-projects" />
+  </head>
+  <body class="projects-page">
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="site-header" id="top">
+      <div class="site-header__inner">
+        <a class="wordmark" href="./index.html" aria-label="hshim studio 홈으로 이동">
+          <span class="wordmark__mark" aria-hidden="true">↗</span>
+          <span>hshim studio</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a class="site-nav__link" href="./index.html">프로필</a>
+          <a class="site-nav__link" href="./journal.html">기록</a>
+          <a class="site-nav__link is-active" href="./projects.html" aria-current="page">프로젝트</a>
+          <a class="site-nav__link" href="./contact.html">문의</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="projects" aria-labelledby="projects-title">
+        <div class="projects__inner page-shell">
+          <div class="projects__heading">
+            <div class="projects__intro">
+              <p class="section-eyebrow">PROJECTS</p>
+              <h1 id="projects-title">프로젝트</h1>
+            </div>
+          </div>
+
+          <div class="project-grid" id="project-list" aria-live="polite">
+            <article class="projects-empty" data-empty-state>
+              <p class="section-eyebrow">NO PROJECTS YET</p>
+              <h2>첫 번째 프로젝트를 등록해보세요.</h2>
+              <p>프로젝트가 등록되면 이곳에 카드 형태로 정리됩니다.</p>
+            </article>
+          </div>
+
+          <p class="projects__status" id="projects-status" role="status"></p>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+      <div class="project-dialog__surface">
+        <div class="project-dialog__header">
+          <p class="section-eyebrow">PROJECT DETAILS</p>
+          <button class="project-dialog__close" id="project-dialog-close" type="button">닫기</button>
+        </div>
+        <div class="project-dialog__thumbnail" id="project-dialog-thumbnail" hidden>
+          <img id="project-dialog-image" alt="" />
+        </div>
+        <h2 class="project-dialog__title" id="project-dialog-title"></h2>
+        <p class="project-dialog__description" id="project-dialog-description"></p>
+        <a class="button button--primary project-dialog__link" id="project-dialog-link" target="_blank" rel="noreferrer noopener">
+          프로젝트 링크 열기 <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </dialog>
+
+    <script src="./projects.js?v=20260918-projects" defer></script>
+  </body>
+</html>

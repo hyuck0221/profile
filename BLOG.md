@@ -44,4 +44,8 @@ git push
 
 GitHub Pages는 `journal.html`에서 `posts/index.json`을 읽어 공개 글을 표시하고, `post.html`은 해당 글의 `posts/<slug>.json`을 읽습니다. 이미지·영상·첨부 파일은 `assets/uploads/`의 상대 경로로 연결됩니다. GitHub Pages에서는 글쓰기 API가 실행되지 않으므로 작성은 로컬에서 `python3 blog.py`로 진행하고, 공개 결과만 push합니다.
 
+## 프로젝트 링크
+
+상단의 `프로젝트` 탭에서는 만든 프로젝트 링크를 카드로 보여줍니다. `python3 blog.py`를 실행한 로컬 환경에서 프로젝트 등록 버튼을 누르면 제목, 링크, 썸네일, 설명만 입력해 저장할 수 있습니다. 프로젝트 목록은 `projects/index.json`에서 읽기 때문에 프로젝트 JSON과 썸네일 파일을 함께 커밋하면 GitHub Pages에서도 그대로 공개됩니다.
+
 브라우저에서 서버를 실행하지 않고 HTML 파일을 직접 열면 파일 쓰기 API와 `fetch`가 동작하지 않습니다. 작성·업로드가 필요할 때는 반드시 `python3 blog.py`로 실행해주세요.

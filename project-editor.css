@@ -1,0 +1,183 @@
+/* Local project registration surface */
+
+.project-editor-paper {
+  width: min(100%, 54rem);
+  margin-inline: auto;
+  padding: clamp(var(--space-lg), 4vw, var(--space-3xl));
+  border: var(--rule-hair) solid var(--color-rule-strong);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.project-editor-paper__meta,
+.project-editor-paper__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  color: var(--color-ink-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-editor-paper__meta {
+  padding-bottom: var(--space-md);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+}
+
+.project-editor-paper__meta span:last-child {
+  color: var(--color-primary-active);
+  text-align: right;
+}
+
+.project-editor-intro {
+  margin-top: var(--space-3xl);
+}
+
+.project-editor-intro h2 {
+  margin: var(--space-md) 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  letter-spacing: -0.065em;
+  line-height: 1;
+}
+
+.project-editor-intro > p:last-child {
+  margin: var(--space-lg) 0 0;
+  color: var(--color-ink-muted);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+}
+
+.project-editor-fields {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
+  display: grid;
+  gap: var(--space-xl);
+  border-top: var(--rule-hair) solid var(--color-rule-strong);
+}
+
+.project-editor-field {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.project-editor-field > span {
+  color: var(--color-ink-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.project-editor-field input,
+.project-editor-field textarea {
+  width: 100%;
+  border: var(--rule-hair) solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-base);
+}
+
+.project-editor-field input {
+  min-height: 3rem;
+  padding: 0 var(--space-md);
+}
+
+.project-editor-field textarea {
+  min-height: 10rem;
+  padding: var(--space-md);
+  resize: vertical;
+  line-height: var(--leading-relaxed);
+}
+
+.project-editor-field input:focus-visible,
+.project-editor-field textarea:focus-visible {
+  outline: var(--rule-strong) solid var(--color-focus);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+.project-editor-field small {
+  color: var(--color-ink-faint);
+  font-size: var(--text-eyebrow);
+  line-height: 1.45;
+}
+
+.project-thumbnail-preview {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: var(--rule-hair) solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper-2);
+}
+
+.project-thumbnail-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.project-thumbnail-preview__empty {
+  margin: 0;
+  padding: var(--space-lg);
+  color: var(--color-ink-faint);
+  font-size: var(--text-caption);
+  text-align: center;
+}
+
+.project-thumbnail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.project-editor-paper__footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-md);
+  align-items: flex-start;
+  border-top: var(--rule-hair) solid var(--color-rule);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.project-editor-paper__footer span:last-child {
+  color: var(--color-primary-active);
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+@media (max-width: 42rem) {
+  .project-editor-paper {
+    padding: var(--space-lg);
+  }
+
+  .project-editor-paper__meta,
+  .project-editor-paper__footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .project-editor-paper__meta span:last-child,
+  .project-editor-paper__footer span:last-child {
+    text-align: left;
+  }
+
+  .project-editor-intro {
+    margin-top: var(--space-2xl);
+  }
+}

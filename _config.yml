@@ -2,6 +2,9 @@ exclude:
   - editor.html
   - editor.css
   - editor.js
+  - project-editor.html
+  - project-editor.css
+  - project-editor.js
   - blog.py
   - BLOG.md
   - .hallmark
