@@ -1,0 +1,42 @@
+{
+  "id": "commentube-소개",
+  "slug": "commentube-소개",
+  "title": "commentube - 소개",
+  "excerpt": "유튜브 댓글을 게임으로 즐겨보세요",
+  "tags": [
+    "개인프로젝트",
+    "commentube"
+  ],
+  "status": "published",
+  "createdAt": "2026-09-21T05:23:56+00:00",
+  "updatedAt": "2026-09-21T05:30:23+00:00",
+  "publishedAt": "2026-09-21T05:23:56+00:00",
+  "readingTime": 1,
+  "cover": "assets/uploads/commentube-소개/commentube-thumbnail.png",
+  "blocks": [
+    {
+      "type": "heading2",
+      "text": "commentube란?"
+    },
+    {
+      "type": "paragraph",
+      "text": "유튜브 댓글을 이용한 간단한 게임을 제공하는 서비스입니다\n시청자는 무심코 넘기던 댓글을 재미적인 요소로 즐길 수 있고,\n유튜버는 시청자와의 친밀감을 높히는 컨텐츠로 사용할 수 있습니다"
+    },
+    {
+      "type": "heading2",
+      "text": "핵심기능"
+    },
+    {
+      "type": "bullet",
+      "text": "링크만으로 플레이: 영상 링크만 넣으면 진행할 수 있는 게임 제공"
+    },
+    {
+      "type": "bullet",
+      "text": "빠르고 쉬운 진행방식: 단순 클릭으로만 진행하는 스피디한 게임들"
+    },
+    {
+      "type": "bullet",
+      "text": "게임 외 도구: 댓글 추첨과 댓글 추출 기능을 제공"
+    }
+  ]
+}

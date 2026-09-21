@@ -3,10 +3,12 @@
   "slug": "타피스-택시회사-erp",
   "title": "타피스 - 소개",
   "excerpt": "아우토크립트 / 택시회사 맞춤 자원 통합관리 시스템\n2022.11 ~ 2026.08",
-  "tags": [],
+  "tags": [
+    "아우토크립트"
+  ],
   "status": "published",
   "createdAt": "2026-08-31T06:17:48+00:00",
-  "updatedAt": "2026-09-14T00:33:11+00:00",
+  "updatedAt": "2026-09-21T03:32:47+00:00",
   "publishedAt": "2026-08-31T06:17:48+00:00",
   "readingTime": 4,
   "cover": "assets/uploads/타피스-택시회사-erp/ChatGPT-Image-2026년-8월-31일-오후-03_22_39.png",

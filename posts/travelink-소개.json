@@ -1,0 +1,58 @@
+{
+  "id": "travelink-소개",
+  "slug": "travelink-소개",
+  "title": "Travelink - 소개",
+  "excerpt": "링크로 저장되는 일정 관리 웹사이트",
+  "tags": [
+    "개인프로젝트",
+    "travelink"
+  ],
+  "status": "published",
+  "createdAt": "2026-09-21T05:07:47+00:00",
+  "updatedAt": "2026-09-21T05:23:30+00:00",
+  "publishedAt": "2026-09-21T05:07:47+00:00",
+  "readingTime": 1,
+  "cover": "assets/uploads/travelink-소개/thumbnail.png",
+  "blocks": [
+    {
+      "type": "heading2",
+      "text": "Travelink란?"
+    },
+    {
+      "type": "paragraph",
+      "text": "일정을 아무리 정리해도 한눈에 들어오지 않던 문제와,\n일정을 공유하려면 필수 로그인과 한도에 걸리던 문제\n번거로운 과정을 모두 없애고 간편하게 만들고 보여주는 일정 관리 서비스입니다"
+    },
+    {
+      "type": "heading2",
+      "text": "핵심기능"
+    },
+    {
+      "type": "bullet",
+      "text": "지도 위 핀: 한눈에 모든 일정이 보이는 지도 위 핀 표시"
+    },
+    {
+      "type": "bullet",
+      "text": "일정 링크 저장: 모든 데이터는 링크로 저장되어 쉽고 빠른 일정 공유"
+    },
+    {
+      "type": "bullet",
+      "text": "AI 도구: 브라우저 로컬 모델이나 외부 AI를 연결하여 사용 가능"
+    },
+    {
+      "type": "bullet",
+      "text": "MCP: Agent와 연결하여 일정 생성 가능"
+    },
+    {
+      "type": "bullet",
+      "text": "모바일 기반 UI 지원: 모바일 사이즈에 맞게 웹 UI 자동 변경"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/travelink-소개/travelink_main.png",
+      "name": "travelink_main.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    }
+  ]
+}

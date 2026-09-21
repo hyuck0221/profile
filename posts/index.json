@@ -1,13 +1,79 @@
 [
   {
+    "id": "commentube-소개",
+    "slug": "commentube-소개",
+    "title": "commentube - 소개",
+    "excerpt": "유튜브 댓글을 게임으로 즐겨보세요",
+    "tags": [
+      "개인프로젝트",
+      "commentube"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-21T05:23:56+00:00",
+    "updatedAt": "2026-09-21T05:30:23+00:00",
+    "readingTime": 1,
+    "cover": "assets/uploads/commentube-소개/commentube-thumbnail.png",
+    "file": "./posts/commentube-소개.json"
+  },
+  {
+    "id": "travelink-소개",
+    "slug": "travelink-소개",
+    "title": "Travelink - 소개",
+    "excerpt": "링크로 저장되는 일정 관리 웹사이트",
+    "tags": [
+      "개인프로젝트",
+      "travelink"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-21T05:07:47+00:00",
+    "updatedAt": "2026-09-21T05:23:30+00:00",
+    "readingTime": 1,
+    "cover": "assets/uploads/travelink-소개/thumbnail.png",
+    "file": "./posts/travelink-소개.json"
+  },
+  {
+    "id": "apisis-backend",
+    "slug": "apisis-backend",
+    "title": "APIsis - 인증체계",
+    "excerpt": "APIsis 프로젝트의 백엔드 인증 설계에 대한 글입니다",
+    "tags": [
+      "개인프로젝트",
+      "APIsis"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-21T04:19:36+00:00",
+    "updatedAt": "2026-09-21T05:06:49+00:00",
+    "readingTime": 2,
+    "cover": "assets/uploads/apisis-backend/ChatGPT-Image-2026년-9월-21일-오후-01_19_12.png",
+    "file": "./posts/apisis-backend.json"
+  },
+  {
+    "id": "apisis-소개",
+    "slug": "apisis-소개",
+    "title": "APIsis - 소개",
+    "excerpt": "간편한 Open API 관리 서비스",
+    "tags": [
+      "개인프로젝트",
+      "APIsis"
+    ],
+    "status": "published",
+    "publishedAt": "2026-09-21T03:34:08+00:00",
+    "updatedAt": "2026-09-21T05:06:56+00:00",
+    "readingTime": 1,
+    "cover": "assets/uploads/apisis-소개/ChatGPT-Image-2026년-9월-18일-오후-01_44_09.png",
+    "file": "./posts/apisis-소개.json"
+  },
+  {
     "id": "타피스-알림기능-구현에-대하여",
     "slug": "타피스-알림기능-구현에-대하여",
-    "title": "타피스 - 알림기능 구현에 대하여",
+    "title": "타피스 - 알림기능 구현",
     "excerpt": "타피스에 도입한 알림 기능 설계부터 개발까지 과정을 정리합니다",
-    "tags": [],
+    "tags": [
+      "아우토크립트"
+    ],
     "status": "published",
     "publishedAt": "2026-09-14T00:34:02+00:00",
-    "updatedAt": "2026-09-14T01:46:39+00:00",
+    "updatedAt": "2026-09-21T04:16:00+00:00",
     "readingTime": 2,
     "cover": "assets/uploads/타피스-알림기능-구현에-대하여/ChatGPT-Image-2026년-9월-14일-오전-09_51_07.png",
     "file": "./posts/타피스-알림기능-구현에-대하여.json"
@@ -17,10 +83,12 @@
     "slug": "타피스-운영-인프라-이관-프로세스",
     "title": "타피스 - 운영 인프라 이관 프로세스",
     "excerpt": "실 운영중인 전체 시스템 인프라를 다운타임 없이 이관한 과정을 정리합니다",
-    "tags": [],
+    "tags": [
+      "아우토크립트"
+    ],
     "status": "published",
     "publishedAt": "2026-09-08T06:05:51+00:00",
-    "updatedAt": "2026-09-14T00:33:17+00:00",
+    "updatedAt": "2026-09-21T03:32:42+00:00",
     "readingTime": 2,
     "cover": "assets/uploads/타피스-운영-인프라-이관-프로세스/ChatGPT-Image-2026년-9월-8일-오후-04_31_51.png",
     "file": "./posts/타피스-운영-인프라-이관-프로세스.json"
@@ -30,10 +98,12 @@
     "slug": "타피스-택시회사-erp",
     "title": "타피스 - 소개",
     "excerpt": "아우토크립트 / 택시회사 맞춤 자원 통합관리 시스템\n2022.11 ~ 2026.08",
-    "tags": [],
+    "tags": [
+      "아우토크립트"
+    ],
     "status": "published",
     "publishedAt": "2026-08-31T06:17:48+00:00",
-    "updatedAt": "2026-09-14T00:33:11+00:00",
+    "updatedAt": "2026-09-21T03:32:47+00:00",
     "readingTime": 4,
     "cover": "assets/uploads/타피스-택시회사-erp/ChatGPT-Image-2026년-8월-31일-오후-03_22_39.png",
     "file": "./posts/타피스-택시회사-erp.json"

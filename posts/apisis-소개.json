@@ -1,0 +1,138 @@
+{
+  "id": "apisis-소개",
+  "slug": "apisis-소개",
+  "title": "APIsis - 소개",
+  "excerpt": "간편한 Open API 관리 서비스",
+  "tags": [
+    "개인프로젝트",
+    "APIsis"
+  ],
+  "status": "published",
+  "createdAt": "2026-09-21T03:34:08+00:00",
+  "updatedAt": "2026-09-21T05:06:56+00:00",
+  "publishedAt": "2026-09-21T03:34:08+00:00",
+  "readingTime": 1,
+  "cover": "assets/uploads/apisis-소개/ChatGPT-Image-2026년-9월-18일-오후-01_44_09.png",
+  "blocks": [
+    {
+      "type": "heading2",
+      "text": "APIsis란?"
+    },
+    {
+      "type": "paragraph",
+      "text": "프론트나 백엔드 개발을 하다 보면 데이터가 제일 필요로 하는 경우가 발생합니다\n매번 여러 서비스 연동을 통해 데이터를 긁어오곤 했는데, 각기 다른 API key를 관리해야 하고 관리포인트가 다 분리되는 문제가 매우 번거로웠습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "하나의 서비스로 묶고 API key 하나로 모든 데이터를 호출해볼 수 있는 개발자 친화적인 open API 서비스입니다"
+    },
+    {
+      "type": "quote",
+      "text": "네이밍\nAPI + oasis: 황량한 사막 속 물이 간절할 때 한줄기의 빛이 되주는 오아시스처럼 데이터가 간절할 때 API 계의 오아시스가 되었음 하여 APIsis로 지었습니다"
+    },
+    {
+      "type": "heading2",
+      "text": "핵심기능"
+    },
+    {
+      "type": "bullet",
+      "text": "API Key 관리: 자유롭게 키를 관리합니다. 활성/비활성 옵션으로 실시간 block을 지원합니다"
+    },
+    {
+      "type": "bullet",
+      "text": "실시간 통계: 호출 로그 기반 실시간 통계를 볼 수 있습니다"
+    },
+    {
+      "type": "bullet",
+      "text": "AI 분석: 호출 로그 기반으로 AI가 분석하여 문제점과 개선방향을 가이드합니다"
+    },
+    {
+      "type": "bullet",
+      "text": "MCP: MCP를 지원하여 AI agent가 스스로 API spec을 읽고 설계하도록 합니다"
+    },
+    {
+      "type": "heading2",
+      "text": "로그인"
+    },
+    {
+      "type": "paragraph",
+      "text": "로그인 자체도 빼고 싶었으나, 스팸 방지와 API key 관리를 위해 로그인 시스템을 추가하였습니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "3가지의 oauth2 로그인을 지원합니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/apisis-소개/apisis_login.png",
+      "name": "apisis_login.png",
+      "mime": "image/png",
+      "width": 25,
+      "align": "left"
+    },
+    {
+      "type": "paragraph",
+      "text": "이메일 당 한 계정을 원칙으로 하며,\n다른 oauth지만 이메일이 같을 경우 최초 생성된 계정으로 자동 연결됩니다"
+    },
+    {
+      "type": "heading2",
+      "text": "라이선스"
+    },
+    {
+      "type": "paragraph",
+      "text": "계정마다 등록할 수 있는 라이선스 기능을 지원합니다"
+    },
+    {
+      "type": "paragraph",
+      "text": "스팸 방지를 위해 API 별 호출 한도가 존재합니다\n상위 라이선스일 수록 호출 한도가 증가하며, 라이선스는 계정 당 하나만 등록할 수 있습니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/apisis-소개/apisis_license.png",
+      "name": "apisis_license.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    },
+    {
+      "type": "heading2",
+      "text": "사용방법"
+    },
+    {
+      "type": "paragraph",
+      "text": "API key를 등록합니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/apisis-소개/apisis_apikey.png",
+      "name": "apisis_apikey.png",
+      "mime": "image/png",
+      "width": 50,
+      "align": "left"
+    },
+    {
+      "type": "paragraph",
+      "text": "원하는 API를 선택 후 요청하는 request 대로 호출만 하면 됩니다\n호출 시 \"X-API-KEY\" header에 발급받은 API key만 담아주면 됩니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/apisis-소개/apisis_api_ilst.png",
+      "name": "apisis_api_ilst.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    },
+    {
+      "type": "paragraph",
+      "text": "모든 응답에는 아래와 같은 내용이 포함됩니다"
+    },
+    {
+      "type": "image",
+      "src": "assets/uploads/apisis-소개/apisis_response.png",
+      "name": "apisis_response.png",
+      "mime": "image/png",
+      "width": 100,
+      "align": "left"
+    }
+  ]
+}
