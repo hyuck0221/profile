@@ -101,6 +101,11 @@ button {
   border-bottom: var(--rule-hair) solid var(--color-rule);
 }
 
+.journal-page .site-header,
+.projects-page .site-header {
+  border-bottom: 0;
+}
+
 .site-header__inner {
   width: min(100%, var(--max-width));
   min-height: 4.5rem;
@@ -780,7 +785,6 @@ button {
 
 .journal {
   background-color: var(--color-paper);
-  border-top: var(--rule-hair) solid var(--color-rule);
 }
 
 .journal__inner {
@@ -794,7 +798,6 @@ button {
   align-items: center;
   justify-content: flex-start;
   gap: var(--space-lg);
-  border-top: var(--rule-hair) solid var(--color-rule-strong);
 }
 
 .journal__search {

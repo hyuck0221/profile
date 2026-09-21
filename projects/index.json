@@ -1,25 +1,36 @@
 [
   {
-    "id": "apisis",
-    "slug": "apisis",
-    "title": "APIsis",
-    "url": "https://apisis.dev/",
-    "thumbnail": "assets/uploads/project-apisis/ChatGPT-Image-2026년-9월-18일-오후-01_44_09.png",
-    "description": "편의 API들을 통합 관리하는 API 서버",
-    "createdAt": "2026-09-18T04:44:27+00:00",
-    "updatedAt": "2026-09-18T06:56:15+00:00",
-    "file": "./projects/apisis.json"
+    "id": "room-search",
+    "slug": "room-search",
+    "title": "room-search",
+    "url": "https://github.com/room-search/room-search-app/releases",
+    "thumbnail": "assets/uploads/project-room-search/ChatGPT-Image-2026년-9월-21일-오전-10_06_15.png",
+    "description": "방탈출 검색을 도와주는 AOS, IOS 애플리케이션입니다",
+    "createdAt": "2026-09-21T01:06:20+00:00",
+    "updatedAt": "2026-09-21T01:06:20+00:00",
+    "file": "./projects/room-search.json"
   },
   {
-    "id": "commentube",
-    "slug": "commentube",
-    "title": "commentube",
-    "url": "https://commentube.site/",
-    "thumbnail": "assets/uploads/project-commentube/commentube-thumbnail.png",
-    "description": "유튜브 영상 댓글을 게임으로 즐겨보세요\n진짜댓글 속 AI 찾기, 좋아요 배틀 등 재미있는 컨텐츠들을 업데이트하고 있습니다\n유튜버를 위한 도구로 댓글 랜덤추첨과 추출 기능을 포함하고 있습니다",
-    "createdAt": "2026-09-18T04:23:18+00:00",
-    "updatedAt": "2026-09-18T04:30:10+00:00",
-    "file": "./projects/commentube.json"
+    "id": "universe",
+    "slug": "universe",
+    "title": "universe",
+    "url": "https://ushimverse.hshim.dev/",
+    "thumbnail": "assets/uploads/project-universe/ChatGPT-Image-2026년-9월-21일-오전-10_03_34.png",
+    "description": "일상 속 도구들을 모아둔 웹사이트입니다",
+    "createdAt": "2026-09-21T01:03:55+00:00",
+    "updatedAt": "2026-09-21T01:03:55+00:00",
+    "file": "./projects/universe.json"
+  },
+  {
+    "id": "want-escape",
+    "slug": "want-escape",
+    "title": "want-escape",
+    "url": "https://escape-review.hshim.dev/",
+    "thumbnail": "assets/uploads/project-want-escape/ChatGPT-Image-2026년-9월-21일-오전-09_56_41.png",
+    "description": "방탈출 스프레드시트를 UI로 그려주는 웹사이트입니다",
+    "createdAt": "2026-09-21T00:56:48+00:00",
+    "updatedAt": "2026-09-21T00:56:48+00:00",
+    "file": "./projects/want-escape.json"
   },
   {
     "id": "travelink",
@@ -27,9 +38,31 @@
     "title": "Travelink",
     "url": "https://travelink.hshim.dev/",
     "thumbnail": "assets/uploads/project-travelink/thumbnail.png",
-    "description": "하나의 화면에서 여행 일정을 깔끔하게 관리해보세요\n모든 일정 데이터는 링크로 저장되어 쉽게 공유할 수 있어요\nAI 및 MCP 연결로 일정 관리에 도움을 받을 수 있어요",
+    "description": "한 화면에서 일정을 관리하고 링크로 쉽게 공유할 수 있는 일정관리 서비스입니다",
     "createdAt": "2026-09-18T04:19:21+00:00",
-    "updatedAt": "2026-09-18T04:21:29+00:00",
+    "updatedAt": "2026-09-21T00:51:26+00:00",
     "file": "./projects/travelink.json"
+  },
+  {
+    "id": "commentube",
+    "slug": "commentube",
+    "title": "commentube",
+    "url": "https://commentube.site/",
+    "thumbnail": "assets/uploads/project-commentube/commentube-thumbnail.png",
+    "description": "유튜브 영상 댓글들을 게임으로 만들어줍니다",
+    "createdAt": "2026-09-18T04:23:18+00:00",
+    "updatedAt": "2026-09-21T00:50:16+00:00",
+    "file": "./projects/commentube.json"
+  },
+  {
+    "id": "apisis",
+    "slug": "apisis",
+    "title": "APIsis",
+    "url": "https://apisis.dev/",
+    "thumbnail": "assets/uploads/project-apisis/ChatGPT-Image-2026년-9월-18일-오후-01_44_09.png",
+    "description": "편의 API들을 통합 관리하는 API 서버",
+    "createdAt": "2026-09-18T04:44:27+00:00",
+    "updatedAt": "2026-09-21T00:49:49+00:00",
+    "file": "./projects/apisis.json"
   }
 ]
